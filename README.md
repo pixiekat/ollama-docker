@@ -28,3 +28,10 @@ These are the models I typically pull down:
 - `qwen3.5:9b`
 - `deepseek-coder:6.7b`
 - `translategemma:4b`
+
+## Links
+
+- [ollama/ollama on Docker Hub](https://hub.docker.com/r/ollama/ollama/tags)
+- [open-webui on GHCR](https://github.com/open-webui/open-webui/pkgs/container/open-webui)
+- [ollama/ollama releases](https://github.com/ollama/ollama/releases)
+- [open-webui releases](https://github.com/open-webui/open-webui/releases)
