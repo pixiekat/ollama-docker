@@ -1,0 +1,10 @@
+services:
+  ollama:
+    ports:
+      # add another port here.
+      - "100.200.300.400:11434:11434"
+
+  webui:
+    ports:
+      # add another port here.
+      - "100.200.300.400:3000:8080"

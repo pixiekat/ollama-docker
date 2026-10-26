@@ -1,10 +1,10 @@
 services:
   ollama:
-    image: ollama/ollama:0.40.11
+    image: ollama/ollama:${TAG_OLLAMA:?set TAG_OLLAMA in .env}
     container_name: ollama
     restart: unless-stopped
     ports:
-      - "11434:11434"
+      - "${OPEN_WEBUI_IP:-127.0.0.1}:11434:11434"
     environment:
       - OLLAMA_NUM_PARALLEL=2
       - OLLAMA_KEEP_ALIVE=2m
@@ -25,13 +25,13 @@ services:
   webui:
     depends_on:
       - ollama
-    image: ghcr.io/open-webui/open-webui:0.12.4
+    image: ghcr.io/open-webui/open-webui:${TAG_OPENWEBUI:?set TAG_OPENWEBUI in .env}
     container_name: ollama-webui
     restart: unless-stopped
     volumes:
       - openwebui_data:/app/backend/data
     ports:
-      - "${OPEN_WEBUI_PORT:-3000}:8080"
+      - "${OPEN_WEBUI_IP:-127.0.0.1}:${OPEN_WEBUI_PORT:-3000}:8080"
     environment:
       - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY:?set this in .env}
       - OLLAMA_BASE_URL=http://ollama:11434
